@@ -109,6 +109,11 @@ export const InputContainer = styled.div`
     border: 3px solid var(--color-grey-1);
     font-size: 16px;
   }
+
+  p {
+    color: var(--failed);
+    font-size: 14px;
+  }
 `;
 
 export const BottomContainer = styled.div`

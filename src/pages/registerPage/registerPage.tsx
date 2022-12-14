@@ -1,9 +1,21 @@
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { BrandComponent } from "../../components/brandComponent";
-import { InputContainer } from "../loginPage/loginPageStyled";
 import { RegisterBackground, RegisterMain } from "./registerPageStyled";
+import { formSchema } from "./yupValidation/yupValodation";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { FormComponent } from "../../components/registerPage/formComponent";
+import { iRegisterFormData } from "../../types/types";
 
-export const RegisterPage = () => {
+export const RegisterPage = ({ navigate }: { navigate: any }) => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<iRegisterFormData>({
+    resolver: yupResolver(formSchema()),
+  });
+
   return (
     <RegisterBackground>
       <RegisterMain>
@@ -13,25 +25,12 @@ export const RegisterPage = () => {
             <h3>Cadastro</h3>
             <Link to="/">Retornar para o login</Link>
           </div>
-          <form>
-            <InputContainer>
-              <label htmlFor="name">Nome</label>
-              <input type="text" placeholder="Nome" />
-            </InputContainer>
-            <InputContainer>
-              <label htmlFor="name">Email</label>
-              <input type="email" placeholder="Nome" autoComplete="off" />
-            </InputContainer>
-            <InputContainer>
-              <label htmlFor="name">Senha</label>
-              <input type="password" placeholder="Senha" />
-            </InputContainer>
-            <InputContainer>
-              <label htmlFor="name">Confirmar Senha</label>
-              <input type="password" placeholder="Confirmar Senha" />
-            </InputContainer>
-            <button>Cadastrar</button>
-          </form>
+          <FormComponent
+            errors={errors}
+            register={register}
+            handleSubmit={handleSubmit}
+            navigate={navigate}
+          />
         </section>
       </RegisterMain>
     </RegisterBackground>
