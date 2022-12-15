@@ -25,6 +25,7 @@ export const FormComponent = ({
     }
     fetchData();
   };
+
   return (
     <form noValidate onSubmit={handleSubmit(getData)}>
       <InputContainer>

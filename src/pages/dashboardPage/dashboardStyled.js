@@ -17,7 +17,7 @@ export const ProductsList = styled.ul`
   height: max-content;
 `;
 
-export const Product = styled.li`
+export const StyledProduct = styled.li`
   margin-bottom: 43px;
   width: 22%;
   height: 350px;

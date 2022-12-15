@@ -1,24 +1,42 @@
 import { Header } from "../../components/dashboardPage/header";
-import { Product, ProductsBackground, ProductsList } from "./dashboardStyled";
-import ptest from "../../assets/product-test.png";
+import { ProductsBackground, ProductsList } from "./dashboardStyled";
+import { api } from "../../services/services";
+import { useContext, useEffect, useState } from "react";
+import { Product } from "../../components/dashboardPage/product";
+import { AuthContext } from "../../contexts/authContext";
+import { Modal } from "../../components/dashboardPage/modal";
 
-export const DashboardPage = () => {
+export const DashboardPage = ({ navigate }: any) => {
+  const { token }: any = useContext(AuthContext);
+  const [productList, setProductList] = useState([]);
+
+  useEffect(() => {
+    const getProducts = async () => {
+      try {
+        const response = await api.get("products", {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        });
+        setProductList(response.data);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getProducts();
+  }, [productList]);
+
   return (
     <>
+      <Modal />
       <Header />
       <ProductsBackground>
         <ProductsList>
-          <Product>
-            <div>
-              <img src={ptest} alt="" />
-            </div>
-            <div>
-              <h3>Hamburguer</h3>
-              <p>Sanduíches</p>
-              <h4>R$ 14.00</h4>
-              <button>Adicionar</button>
-            </div>
-          </Product>
+          <>
+            {productList.map((elem) => (
+              <Product elem={elem} key={elem["id"]} />
+            ))}
+          </>
         </ProductsList>
       </ProductsBackground>
     </>
