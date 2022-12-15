@@ -6,9 +6,12 @@ import { Product } from "../../components/dashboardPage/product";
 import { AuthContext } from "../../contexts/authContext";
 import { Modal } from "../../components/dashboardPage/modal";
 
-export const DashboardPage = ({ navigate }: any) => {
+export const DashboardPage = () => {
   const { token }: any = useContext(AuthContext);
   const [productList, setProductList] = useState([]);
+  const [modal, setModal] = useState(false);
+  const [cartList, setCartList] = useState([]);
+  const [searchValue, setSearchValue] = useState("");
 
   useEffect(() => {
     const getProducts = async () => {
@@ -24,19 +27,56 @@ export const DashboardPage = ({ navigate }: any) => {
       }
     };
     getProducts();
-  }, [productList]);
+  }, [productList, token]);
+
+  const RenderAll = () => {
+    return productList.map((elem) => (
+      <Product
+        elem={elem}
+        key={elem["id"]}
+        cartList={cartList}
+        setCartList={setCartList}
+      />
+    ));
+  };
+
+  const RenderFiltered = () => {
+    const filteredProducts = productList.filter((product: any) => {
+      return product.name.toLowerCase().includes(searchValue.toLowerCase());
+    });
+    return (
+      <>
+        {filteredProducts.map((elem) => {
+          return (
+            <Product
+              elem={elem}
+              key={elem["id"]}
+              cartList={cartList}
+              setCartList={setCartList}
+            />
+          );
+        })}
+      </>
+    );
+  };
 
   return (
     <>
-      <Modal />
-      <Header />
+      {modal && (
+        <Modal
+          setModal={setModal}
+          cartList={cartList}
+          setCartList={setCartList}
+        />
+      )}
+      <Header
+        setModal={setModal}
+        cartList={cartList}
+        setSearchValue={setSearchValue}
+      />
       <ProductsBackground>
         <ProductsList>
-          <>
-            {productList.map((elem) => (
-              <Product elem={elem} key={elem["id"]} />
-            ))}
-          </>
+          <>{searchValue === "" ? RenderAll() : RenderFiltered()}</>
         </ProductsList>
       </ProductsBackground>
     </>

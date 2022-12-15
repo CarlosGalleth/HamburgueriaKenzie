@@ -5,7 +5,7 @@ import loggoutIcon from "../../assets/loggout-icon.png";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/authContext";
 
-export const Header = () => {
+export const Header = ({ setModal, cartList, setSearchValue }: any) => {
   const { navigate }: any = useContext(AuthContext);
   const handleLoggout = () => {
     localStorage.removeItem("@TOKEN");
@@ -19,14 +19,18 @@ export const Header = () => {
         </h1>
         <NavBar>
           <div>
-            <input type="text" placeholder="Digitar Pesquisa" />
+            <input
+              type="text"
+              placeholder="Digitar Pesquisa"
+              onChange={(e) => setSearchValue(e.target.value)}
+            />
             <button>
               <img src={searchIcon} alt="" />
             </button>
           </div>
           <div>
-            <div>0</div>
-            <button>
+            <div>{cartList.length}</div>
+            <button onClick={() => setModal(true)}>
               <img src={cartIcon} alt="" />
             </button>
           </div>

@@ -157,6 +157,10 @@ export const ProductInfo = styled.div`
   h3 {
     font-weight: 600;
     font-size: 20px;
+    width: 160px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 
   > * {

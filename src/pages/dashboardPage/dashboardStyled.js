@@ -47,6 +47,10 @@ export const StyledProduct = styled.li`
 
       h3 {
         font-weight: 600;
+        width: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
 
       p {

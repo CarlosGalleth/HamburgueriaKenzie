@@ -1,6 +1,6 @@
 import { StyledProduct } from "../../pages/dashboardPage/dashboardStyled";
 
-export const Product = ({ elem }: any) => {
+export const Product = ({ elem, cartList, setCartList }: any) => {
   return (
     <StyledProduct key={elem.id}>
       <div>
@@ -10,7 +10,9 @@ export const Product = ({ elem }: any) => {
         <h3>{elem.name}</h3>
         <p>{elem.category}</p>
         <h4>R$ {elem.price.toFixed(2)}</h4>
-        <button>Adicionar</button>
+        <button onClick={() => setCartList([...cartList, elem])}>
+          Adicionar
+        </button>
       </div>
     </StyledProduct>
   );

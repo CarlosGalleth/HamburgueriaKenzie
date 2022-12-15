@@ -15,11 +15,8 @@ function App() {
           path="/register"
           element={<RegisterPage navigate={navigate} />}
         />
-        <Route
-          path="/dashboard"
-          element={<DashboardPage navigate={navigate} />}
-        >
-          <Route path=":name" element={<DashboardPage navigate={navigate} />} />
+        <Route path="/dashboard" element={<DashboardPage />}>
+          <Route path=":name" element={<DashboardPage />} />
         </Route>
       </Routes>
     </AuthProvider>
