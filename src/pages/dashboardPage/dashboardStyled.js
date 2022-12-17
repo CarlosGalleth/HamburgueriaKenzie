@@ -2,16 +2,17 @@ import styled from "styled-components";
 
 export const ProductsBackground = styled.div`
   width: 100%;
-
   display: flex;
   justify-content: center;
+  align-items: center;
   padding-top: 30px;
 `;
 
 export const ProductsList = styled.ul`
   display: flex;
-  justify-content: space-between;
+  gap: 1.25%;
   flex-wrap: wrap;
+  justify-content: initial;
 
   width: 80%;
   height: max-content;
@@ -25,11 +26,11 @@ export const ProductsList = styled.ul`
 `;
 
 export const StyledProduct = styled.li`
-  margin-bottom: 43px;
-  width: 22%;
+  width: 24%;
   height: 350px;
   border: 1px solid var(--color-grey-3);
   border-radius: var(--radius-2);
+  margin-bottom: 1.25%;
 
   @media only screen and (max-width: 1150px) {
     width: 500px;
