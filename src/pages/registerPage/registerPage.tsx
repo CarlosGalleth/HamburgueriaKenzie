@@ -9,8 +9,8 @@ import { iRegisterFormData } from "../../types/types";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/authContext";
 
-export const RegisterPage = ({ navigate }: { navigate: any }) => {
-  const { token }: any = useContext(AuthContext);
+export const RegisterPage = () => {
+  const { token, navigate }: any = useContext(AuthContext);
   token && localStorage.removeItem("@TOKEN");
 
   const {

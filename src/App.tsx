@@ -1,20 +1,16 @@
 import React from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import { AuthProvider } from "./contexts/authContext";
 import { DashboardPage } from "./pages/dashboardPage/dashboard";
 import { LoginPage } from "./pages/loginPage/loginPage";
 import { RegisterPage } from "./pages/registerPage/registerPage";
 
 function App() {
-  const navigate = useNavigate();
   return (
-    <AuthProvider navigate={navigate}>
+    <AuthProvider>
       <Routes>
-        <Route path="/" element={<LoginPage navigate={navigate} />} />
-        <Route
-          path="/register"
-          element={<RegisterPage navigate={navigate} />}
-        />
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
         <Route path="/dashboard" element={<DashboardPage />}>
           <Route path=":name" element={<DashboardPage />} />
         </Route>

@@ -7,12 +7,12 @@ import { AuthContext } from "../../contexts/authContext";
 import { Modal } from "../../components/dashboardPage/modal";
 
 export const DashboardPage = () => {
-  const { token }: any = useContext(AuthContext);
+  const { token, navigate }: any = useContext(AuthContext);
   const [productList, setProductList] = useState([]);
   const [modal, setModal] = useState(false);
   const [cartList, setCartList] = useState([]);
   const [searchValue, setSearchValue] = useState("");
-
+ 
   useEffect(() => {
     const getProducts = async () => {
       try {
@@ -73,6 +73,7 @@ export const DashboardPage = () => {
         setModal={setModal}
         cartList={cartList}
         setSearchValue={setSearchValue}
+        navigate={navigate}
       />
       <ProductsBackground>
         <ProductsList>

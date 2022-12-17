@@ -15,6 +15,13 @@ export const ProductsList = styled.ul`
 
   width: 80%;
   height: max-content;
+
+  @media only screen and (max-width: 1150px) {
+    overflow-x: scroll;
+    flex-wrap: nowrap;
+    gap: var(--gap-6);
+    width: 95%;
+  }
 `;
 
 export const StyledProduct = styled.li`
@@ -23,6 +30,11 @@ export const StyledProduct = styled.li`
   height: 350px;
   border: 1px solid var(--color-grey-3);
   border-radius: var(--radius-2);
+
+  @media only screen and (max-width: 1150px) {
+    width: 500px;
+    height: 700px;
+  }
 
   > * {
     &:first-child {
@@ -45,22 +57,39 @@ export const StyledProduct = styled.li`
       justify-content: space-between;
       height: 60%;
 
+      @media only screen and (max-width: 1150px) {
+        padding: 50px 40px;
+      }
+
       h3 {
         font-weight: 600;
-        width: 100%;
+        width: 80%;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
+
+        @media only screen and (max-width: 1150px) {
+          font-size: 35px;
+        }
       }
 
       p {
         color: var(--color-grey-2);
         font-size: 14px;
+
+        @media only screen and (max-width: 1150px) {
+          width: 500px;
+          font-size: 22px;
+        }
       }
 
       h4 {
         color: var(--color-brand-1);
         font-weight: 600;
+
+        @media only screen and (max-width: 1150px) {
+          font-size: 26px;
+        }
       }
 
       button {
@@ -72,6 +101,11 @@ export const StyledProduct = styled.li`
         font-size: 15px;
         border: none;
         border-radius: var(--radius-2);
+
+        @media only screen and (max-width: 1150px) {
+          height: 70px;
+          font-size: 22px;
+        }
       }
     }
   }

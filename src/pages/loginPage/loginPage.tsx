@@ -3,8 +3,8 @@ import { BrandComponent } from "../../components/brandComponent";
 import { FormComponent } from "../../components/loginPage/formComponents";
 import { useContext } from "react";
 import { AuthContext } from "../../contexts/authContext";
-export const LoginPage = ({ navigate }: any) => {
-  const { token }: any = useContext(AuthContext);
+export const LoginPage = () => {
+  const { token, navigate }: any = useContext(AuthContext);
   token && localStorage.removeItem("@TOKEN");
 
   return (

@@ -9,6 +9,10 @@ export const HeaderStyled = styled.header`
   justify-content: center;
   align-items: center;
 
+  @media only screen and (max-width: 1150px) {
+    height: 100px;
+  }
+
   img {
     width: 35px;
     height: 35px;
@@ -20,6 +24,15 @@ export const HeaderContainer = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media only screen and (max-width: 1150px) {
+    width: 95%;
+  }
+
+  @media only screen and (max-width: 550px) {
+    flex-direction: column;
+    gap: var(--gap-10);
+  }
 
   h1 {
     color: var(--color-grey-1);
@@ -38,6 +51,14 @@ export const NavBar = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media only screen and (max-width: 1150px) {
+    width: 60%;
+  }
+
+  @media only screen and (max-width: 550px) {
+    width: 100%;
+  }
 
   > * {
     &:first-child {

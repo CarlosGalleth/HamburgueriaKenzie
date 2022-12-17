@@ -14,7 +14,6 @@ export const FormComponent = ({ navigate }: any) => {
     resolver: yupResolver(formSchema()),
   });
   function getData(data: any) {
-    console.log(data);
     async function fetchData() {
       try {
         const response = await api.post("login", data);
